@@ -1,0 +1,4 @@
+<app-add-form (onAddPet)="addPet($event)"></app-add-form>
+<div class="pet-container">
+    <app-pets-item *ngFor="let pet of pets" [pet]="pet" (onDeletePet)="deletePet(pet)" (onEditPet)="editPet($event)" ></app-pets-item>
+</div>
