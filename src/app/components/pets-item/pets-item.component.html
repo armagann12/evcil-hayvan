@@ -1,0 +1,66 @@
+<div class="pet">
+    <div>
+        <img class="img" src='{{pet.imageURL}}' alt="No photo">
+    </div>
+    <div class="info">
+        <label>Name:</label>
+        <h2> {{pet.name}} </h2>
+    </div>
+    <div class="info">
+        <label>Age:</label>
+        <h2> {{pet.age}} </h2>
+    </div>
+    <div class="info">
+        <label>Family:</label>
+        <h2> {{pet.family}} </h2>
+    </div>
+    <div class="info">
+        <label>Species:</label>
+        <h2> {{pet.species}} </h2>
+    </div>
+    <div class="pet-button-area">
+        <app-button color="grey" text="Edit" (btnClick)="openModal()"></app-button>
+        <app-button color="red" text="Delete" (btnClick)="onDelete(pet)"></app-button>
+    </div>
+</div>
+<div class="modal" *ngIf="showModal === true">
+    <div class="modal-content">
+
+        <form (ngSubmit)="onSubmit()">
+            <div>
+                <h2 class="form-header">Edit Your Pet</h2>
+                <div class="form-img">
+                    <img class="img-bigger" [src]='imgSrc' alt="No photo">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Name:</label>
+                    <input class="input" name="name" type="text" [(ngModel)]="pet.name" id="name">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="age">Age:</label>
+                    <input class="input" type="number" name="age" [(ngModel)]="pet.age" id="age"
+                        placeholder="Add pet age">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Family:</label>
+                    <input class="input" type="text" name="family" [(ngModel)]="pet.family" id="family"
+                        placeholder="Add pet family">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Species:</label>
+                    <input class="input" type="text" name="species" [(ngModel)]="pet.species" id="species"
+                        placeholder="Add pet species">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="image">Photo:</label>
+                    <input class="input" id="file" type="file" (change)="updateFile($event)" accept="image/*">
+                </div>
+            </div>
+            <div class="form-btn">
+                <input type="submit" value="Edit" class="button">
+                <app-button (btnClick)="closeModal()" text="Cancel" color="blue" type="button"></app-button>
+            </div>
+        </form>
+
+    </div>
+</div>
