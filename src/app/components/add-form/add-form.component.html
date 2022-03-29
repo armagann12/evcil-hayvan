@@ -1,0 +1,43 @@
+<div class="add-button">
+    <app-button color="#6D8299" text="Add" (btnClick)="openModal()"></app-button>
+</div>
+
+<div class="modal" *ngIf="showModal === true">
+    <div class="modal-content">
+        <form (ngSubmit)="onSubmit()">
+            <div>
+                <h2 class="form-header">Add New Pet</h2>
+                <div class="form-img">
+                    <img class="img-bigger" [src]="imgSrc" alt="img">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Name:</label>
+                    <input class="input" type="text" name="name" [(ngModel)]="name" id="name"
+                        placeholder="Add pet name">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Age:</label>
+                    <input class="input" type="number" name="age" [(ngModel)]="age" id="age" placeholder="Add pet age">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Family:</label>
+                    <input class="input" type="text" name="family" [(ngModel)]="family" id="family"
+                        placeholder="Add pet family">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Species:</label>
+                    <input class="input" type="text" name="species" [(ngModel)]="species" id="species"
+                        placeholder="Add pet species">
+                </div>
+                <div class="label-input">
+                    <label class="label" for="name">Photo:</label>
+                    <input class="input" id="file" type="file" (change)="uploadFile($event)" accept="image/*">
+                </div>
+            </div>
+            <div class="form-btn">
+                <input type="submit" value="Add" class="button">
+                <app-button (btnClick)="closeModal()" text="Cancel" color="blue" type="button"></app-button>
+            </div>
+        </form>
+    </div>
+</div>
